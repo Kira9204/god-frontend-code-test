@@ -113,19 +113,15 @@ const Carousel: FC<Props> = ({ data, extend }) => {
 
   const SwipterProps = {
     ...commonProps,
-    ...isMobile ? mobileProps: {}
+    ...(isMobile ? mobileProps : {}),
   };
 
   return (
     <Block extend={{ padding: '20px 10px 50px 10px', ...extend }}>
-      <Swiper
-        key={'' + isMobile}
-        onSwiper={setSwiperInstance}
-        {...SwipterProps}
-      >
+      <Swiper key={'' + isMobile} onSwiper={setSwiperInstance} {...SwipterProps}>
         {data.map((rn, index) => {
           return (
-            <SwiperSlide key={index} className={css({ marginBottom: isMobile ? '40px': 0 })}>
+            <SwiperSlide key={index} className={css({ marginBottom: isMobile ? '40px' : 0 })}>
               {rn}
             </SwiperSlide>
           );
